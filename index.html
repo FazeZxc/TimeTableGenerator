@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Timetable Generator</title>
+    <link rel="stylesheet" href="./styles/light.css" />
+  </head>
+  <body>
+    <h2>Timetable Generator</h2>
+
+    <div>
+      <label>Subjects(comma-separated):</label>
+      <input type="text" id="subjects" />
+      <select name="hours" id="hours">
+        <option value="50">50 mins</option>
+        <option value="100">100 mins</option>
+      </select>
+      <button onclick="addSubjects()">Add</button>
+      <button onclick="resetSubjects()">Reset</button>
+    </div>
+    <div style="display: flex; flex-direction: column;" id="subjectSpace"></div>
+    <label for="days">Number of Days:</label>
+    <input type="text" disabled id="days" value="0" />
+    <div style="display: flex; flex-direction: row; gap: 10px;" >
+      <div>
+        <input type="checkbox" id="Monday" name="1" onchange="mondayChecked()" />
+        <label class="dayLabel">Monday</label>
+      </div>
+      <div>
+        <input type="checkbox" id="Tuesday" onchange="tuesdayChecked()" />
+        <label class="dayLabel">Tuesday</label>
+      </div>
+      <div>
+        <input type="checkbox" id="Wednesday" onchange="wednesdayChecked()" />
+        <label class="dayLabel">Wednesday</label>
+      </div>
+      <div>
+        <input type="checkbox" id="Thursday" onchange="thursdayChecked()" />
+        <label class="dayLabel">Thursday</label>
+      </div>
+      <div>
+        <input type="checkbox" id="Friday" onchange="fridayChecked()" />
+        <label class="dayLabel">Friday</label>
+      </div>
+      <div>
+        <input type="checkbox" id="Saturday" onchange="saturdayChecked()" />
+        <label class="dayLabel">Saturday</label>
+      </div>
+      <div>
+        <input type="checkbox" id="Sunday" onchange="sundayChecked()" />
+
+        <label class="dayLabel">Sunday</label>
+      </div>
+    </div>
+
+    <label for="periods">Number of Periods per Day:</label>
+    <input type="number" id="periods" min="1" max="8" value="6" />
+    <button onclick="generateTimetable()">Generate Timetable</button>
+
+    <table id="timetable"></table>
+
+    <script src="/app.js"></script>
+    <script src="assets/days.js"></script>
+  </body>
+</html>
