@@ -61,7 +61,12 @@ function generateTimetable() {
 
     for (let day = 0; day < days; day++) {
       const cell = document.createElement("td");
-      cell.innerHTML = `<div id="${week[day]}" class="subjectCell ${counter}"></div>`;
+      const subjectIndex = day * periods + period - 1;
+      if (subjectIndex < subjects.length) {
+        cell.innerHTML = subjects[subjectIndex].subject;
+      }
+      cell.id = `${week[day]}-${period - 1}`;
+      cell.classList.add("subjectCell", week[day]);
       row.appendChild(cell);
     }
     tbody.appendChild(row);
@@ -70,13 +75,16 @@ function generateTimetable() {
 
   timetable.appendChild(tbody);
   const row = document.querySelector(".row");
-  console.log(row.childElementCount);
 
   finalTimetable = arrangeTimetable(subjectsInput);
-  console.log(finalTimetable);
 
-  for(let  i = 0 ; i < counter ; i++){
-    
+  for (const subject in finalTimetable) {
+    finalTimetable[subject].forEach((slot) => {
+      const cell = document.getElementById(`${slot.day}-${slot.time}`);
+      if (cell) {
+        cell.innerHTML = subject;
+      }
+    });
   }
 }
 
@@ -93,7 +101,7 @@ function addSubjects() {
 
   displaySubjects.insertAdjacentHTML(
     "beforeend",
-    `<div>${inputSubject.value} ${inputDuration.value}mins</div>`
+    `<div>${subjectsInput.length}) ${inputSubject.value} ${inputDuration.value}mins</div>`
   );
 
   inputSubject.value = "";
@@ -102,28 +110,32 @@ function addSubjects() {
 function resetSubjects() {
   const displaySubjects = document.querySelector("#subjectSpace");
   displaySubjects.innerHTML = "";
+  subjectsInput = []
 }
 
 function arrangeTimetable(subjects) {
   const timetable = {};
 
   subjects.forEach((subject) => {
-    timetable[subject] = [];
+    timetable[subject.subject] = [];
   });
-
   subjects.forEach((subject) => {
-    for (let i = 0; i < 3; i++) {
+    for (let i = 0; i < 5; i++) {
       const randomSlot =
         availableTimeSlots[
           Math.floor(Math.random() * availableTimeSlots.length)
         ];
+
       if (
-        !timetable[subject].some(
+        !timetable[subject.subject].some(
           (entry) =>
             entry.day === randomSlot.day && entry.time === randomSlot.time
         )
       ) {
-        timetable[subject].push({ day: randomSlot.day, time: randomSlot.time });
+        timetable[subject.subject].push({
+          day: randomSlot.day,
+          time: randomSlot.time,
+        });
       } else {
         i--;
       }

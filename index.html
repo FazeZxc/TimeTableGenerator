@@ -7,59 +7,104 @@
     <link rel="stylesheet" href="./styles/light.css" />
   </head>
   <body>
-    <h2>Timetable Generator</h2>
+    <div class="wrapper">
+      <div
+        style="
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          padding: 5px;
+          margin-bottom: 50px;
+          text-decoration: underline;
+        "
+      >
+        <h1>Timetable Generator</h1>
+      </div>
 
-    <div>
-      <label>Subjects(comma-separated):</label>
-      <input type="text" id="subjects" />
-      <select name="hours" id="hours">
-        <option value="50">50 mins</option>
-        <option value="100">100 mins</option>
-      </select>
-      <button onclick="addSubjects()">Add</button>
-      <button onclick="resetSubjects()">Reset</button>
+      <div class="SubjectSpace">
+        <div>
+          <div>
+            <label>Enter Subject:</label>
+            <input style="height: 25px" type="text" id="subjects" />
+            <select style="height: 25px" name="hours" id="hours">
+              <option value="50">50 mins</option>
+              <option value="100">100 mins</option>
+            </select>
+          </div>
+          <div style="margin-left: 120px; margin-top: 20px">
+            <button onclick="addSubjects()" class="button add">Add</button>
+            <button onclick="resetSubjects()" class="button reset">
+              Reset
+            </button>
+          </div>
+        </div>
+        <div
+          style="
+            margin-left: 200px;
+            display: flex;
+            flex-direction: column;
+            width: 400px;
+            min-height: 250px;
+            padding: 20px;
+            font-size: larger;
+            font-weight: 600;
+            border-radius: 20px;
+            border: 2px solid white;
+          "
+          id="subjectSpace"
+        ></div>
+      </div>
+      <br>
+      <label for="days">Number of Days:</label>
+      <input type="text" disabled id="days" value="0" />
+      <div style="display: flex; flex-direction: row; gap: 10px">
+        <div>
+          <input
+            type="checkbox"
+            id="Monday"
+            name="1"
+            onchange="mondayChecked()"
+          />
+          <label class="dayLabel">Monday</label>
+        </div>
+        <div>
+          <input type="checkbox" id="Tuesday" onchange="tuesdayChecked()" />
+          <label class="dayLabel">Tuesday</label>
+        </div>
+        <div>
+          <input type="checkbox" id="Wednesday" onchange="wednesdayChecked()" />
+          <label class="dayLabel">Wednesday</label>
+        </div>
+        <div>
+          <input type="checkbox" id="Thursday" onchange="thursdayChecked()" />
+          <label class="dayLabel">Thursday</label>
+        </div>
+        <div>
+          <input type="checkbox" id="Friday" onchange="fridayChecked()" />
+          <label class="dayLabel">Friday</label>
+        </div>
+        <div>
+          <input type="checkbox" id="Saturday" onchange="saturdayChecked()" />
+          <label class="dayLabel">Saturday</label>
+        </div>
+        <div>
+          <input type="checkbox" id="Sunday" onchange="sundayChecked()" />
+
+          <label class="dayLabel">Sunday</label>
+        </div>
+      </div>
+      <br>
+      <label for="periods">Number of Periods per Day:</label>
+      <input type="number" id="periods" min="1" max="8" value="6" />
+      <br />
+      <div style="display: flex; justify-content: center; align-items: center;">
+        <button onclick="generateTimetable()" class="button generate">
+          Generate Timetable
+        </button>
+      </div>
+
+      <table id="timetable"></table>
     </div>
-    <div style="display: flex; flex-direction: column;" id="subjectSpace"></div>
-    <label for="days">Number of Days:</label>
-    <input type="text" disabled id="days" value="0" />
-    <div style="display: flex; flex-direction: row; gap: 10px;" >
-      <div>
-        <input type="checkbox" id="Monday" name="1" onchange="mondayChecked()" />
-        <label class="dayLabel">Monday</label>
-      </div>
-      <div>
-        <input type="checkbox" id="Tuesday" onchange="tuesdayChecked()" />
-        <label class="dayLabel">Tuesday</label>
-      </div>
-      <div>
-        <input type="checkbox" id="Wednesday" onchange="wednesdayChecked()" />
-        <label class="dayLabel">Wednesday</label>
-      </div>
-      <div>
-        <input type="checkbox" id="Thursday" onchange="thursdayChecked()" />
-        <label class="dayLabel">Thursday</label>
-      </div>
-      <div>
-        <input type="checkbox" id="Friday" onchange="fridayChecked()" />
-        <label class="dayLabel">Friday</label>
-      </div>
-      <div>
-        <input type="checkbox" id="Saturday" onchange="saturdayChecked()" />
-        <label class="dayLabel">Saturday</label>
-      </div>
-      <div>
-        <input type="checkbox" id="Sunday" onchange="sundayChecked()" />
-
-        <label class="dayLabel">Sunday</label>
-      </div>
-    </div>
-
-    <label for="periods">Number of Periods per Day:</label>
-    <input type="number" id="periods" min="1" max="8" value="6" />
-    <button onclick="generateTimetable()">Generate Timetable</button>
-
-    <table id="timetable"></table>
-
     <script src="/app.js"></script>
     <script src="assets/days.js"></script>
   </body>
