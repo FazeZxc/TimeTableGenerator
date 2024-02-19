@@ -71,6 +71,10 @@ select:focus {
   background-color: #3498db;
 }
 
+.button.export {
+  background-color: lime;
+}
+
 .button:hover {
   background-color: #333;
 }
@@ -102,7 +106,6 @@ th {
   color: #fff;
 }
 
-/* Add animation to the checkboxes */
 input[type="checkbox"] {
   transform: scale(1.5);
   margin-right: 5px;
@@ -113,7 +116,6 @@ input[type="checkbox"]:checked {
   transform: scale(1.8);
 }
 
-/* Add fade-in animation to the timetable */
 #timetable {
   opacity: 0;
   animation: fadeIn 1s ease-in-out forwards;
