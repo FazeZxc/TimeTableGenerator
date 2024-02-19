@@ -63,7 +63,11 @@ function generateTimetable() {
       const cell = document.createElement("td");
       const subjectIndex = day * periods + period - 1;
       if (subjectIndex < subjects.length) {
-        cell.innerHTML = subjects[subjectIndex].subject;
+        if (subjects[subjectIndex].subject == undefined) {
+          cell.value = "";
+        } else {
+          cell.value = subjects[subjectIndex].subject;
+        }
       }
       cell.id = `${week[day]}-${period - 1}`;
       cell.classList.add("subjectCell", week[day]);
@@ -86,6 +90,7 @@ function generateTimetable() {
       }
     });
   }
+  document.getElementById('exportImageBtn').style.display = 'inline-block';
 }
 
 const subjectsInput = [];
@@ -110,7 +115,7 @@ function addSubjects() {
 function resetSubjects() {
   const displaySubjects = document.querySelector("#subjectSpace");
   displaySubjects.innerHTML = "";
-  subjectsInput = []
+  subjectsInput = [];
 }
 
 function arrangeTimetable(subjects) {
@@ -144,3 +149,14 @@ function arrangeTimetable(subjects) {
 
   return timetable;
 }
+
+function exportAsImage() {
+  html2canvas(document.getElementById("timetable")).then(function (canvas) {
+    var image = canvas.toDataURL("image/png");
+    var link = document.createElement("a");
+    link.href = image;
+    link.download = "timetable.png";
+    link.click();
+  });
+}
+

@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Timetable Generator</title>
-    <link rel="stylesheet" href="./styles/light.css" />
+    <link rel="stylesheet" href="./styles/styles.css" />
   </head>
   <body>
     <div class="wrapper">
@@ -18,15 +18,15 @@
           text-decoration: underline;
         "
       >
-        <h1>Timetable Generator</h1>
+        <h1>Random Timetable Generator</h1>
       </div>
 
       <div class="SubjectSpace">
         <div>
           <div>
             <label>Enter Subject:</label>
-            <input style="height: 25px" type="text" id="subjects" />
-            <select style="height: 25px" name="hours" id="hours">
+            <input style="height: 30px" type="text" id="subjects" />
+            <select style="height: 30px" name="hours" id="hours">
               <option value="50">50 mins</option>
               <option value="100">100 mins</option>
             </select>
@@ -54,7 +54,7 @@
           id="subjectSpace"
         ></div>
       </div>
-      <br>
+      <br />
       <label for="days">Number of Days:</label>
       <input type="text" disabled id="days" value="0" />
       <div style="display: flex; flex-direction: row; gap: 10px">
@@ -93,18 +93,18 @@
           <label class="dayLabel">Sunday</label>
         </div>
       </div>
-      <br>
+      <br />
       <label for="periods">Number of Periods per Day:</label>
       <input type="number" id="periods" min="1" max="8" value="6" />
       <br />
-      <div style="display: flex; justify-content: center; align-items: center;">
+      <div style="display: flex; justify-content: center; align-items: center">
         <button onclick="generateTimetable()" class="button generate">
           Generate Timetable
         </button>
       </div>
-
       <table id="timetable"></table>
-    </div>
+      <button id="exportImageBtn" onclick="exportAsImage()" class="button export" style="display: none;">Export as Image</button>    </div>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
     <script src="/app.js"></script>
     <script src="assets/days.js"></script>
   </body>
