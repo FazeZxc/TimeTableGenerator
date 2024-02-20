@@ -90,7 +90,7 @@ function generateTimetable() {
       }
     });
   }
-  document.getElementById('exportImageBtn').style.display = 'inline-block';
+  document.getElementById("exportImageBtn").style.display = "inline-block";
 }
 
 const subjectsInput = [];
@@ -150,13 +150,14 @@ function arrangeTimetable(subjects) {
   return timetable;
 }
 
-function exportAsImage() {
-  html2canvas(document.getElementById("timetable")).then(function (canvas) {
-    var image = canvas.toDataURL("image/png");
-    var link = document.createElement("a");
-    link.href = image;
-    link.download = "timetable.png";
-    link.click();
-  });
-}
+document
+  .querySelector("#exportImageBtn")
+  .addEventListener("click", function () {
+    var timetableElement = document.querySelector("#timetable");
 
+    html2canvas(timetableElement).then((canvas) => {
+      if (typeof Canvas2Image !== "undefined") {
+        Canvas2Image.saveAsPNG(canvas);
+      }
+    });
+  });

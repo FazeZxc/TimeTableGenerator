@@ -16,7 +16,6 @@ function mondayChecked() {
     days = week.length;
     daysInput.value = days;
   }
-  console.log(week);
 }
 function tuesdayChecked() {
   const Checkbox = document.querySelector("#Tuesday");
@@ -31,7 +30,6 @@ function tuesdayChecked() {
     days = week.length;
     daysInput.value = days;
   }
-  console.log(week);
 }
 
 function wednesdayChecked() {
@@ -47,7 +45,6 @@ function wednesdayChecked() {
     days = week.length;
     daysInput.value = days;
   }
-  console.log(week);
 }
 
 function thursdayChecked() {
@@ -63,7 +60,6 @@ function thursdayChecked() {
     days = week.length;
     daysInput.value = days;
   }
-  console.log(week);
   days = week.length;
   daysInput.value = days;
 }
@@ -81,7 +77,6 @@ function fridayChecked() {
     days = week.length;
     daysInput.value = days;
   }
-  console.log(week);
 }
 
 function saturdayChecked() {
@@ -97,7 +92,6 @@ function saturdayChecked() {
     days = week.length;
     daysInput.value = days;
   }
-  console.log(week);
 }
 
 function sundayChecked() {
@@ -113,5 +107,4 @@ function sundayChecked() {
     days = week.length;
     daysInput.value = days;
   }
-  console.log(week);
 }
